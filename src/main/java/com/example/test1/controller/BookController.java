@@ -59,7 +59,7 @@ public class BookController {
         }
         book.setId(id);
         bookService.save(book);
-        redirectAttributes.addAttribute("message", "Cập nhật sách thành công");
+        redirectAttributes.addFlashAttribute("message", "Cập nhật sách thành công");
         return "redirect:/";
     }
 
