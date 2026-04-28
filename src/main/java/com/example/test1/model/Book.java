@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -34,6 +35,7 @@ public class Book {
 
     @NotNull(message = "Date không được để trống")
     @PastOrPresent(message = "Date phải là ngày trong quá khứ hoặc hiện tại")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date")
     private LocalDate date;
 }

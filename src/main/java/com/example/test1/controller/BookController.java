@@ -42,14 +42,14 @@ public class BookController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit/${id}")
-    public String editForm(@PathVariable(value = "id") Long id, Model model) {
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable Long id, Model model) {
         Book book = bookService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
         model.addAttribute("book", book);
         return "book-form";
     }
 
-    @PostMapping("/update/${id}")
+    @PostMapping("/update/{id}")
     public String update(@PathVariable Long id,
                          @Valid @ModelAttribute("book") Book book,
                          BindingResult result,
@@ -62,7 +62,7 @@ public class BookController {
         return "redirect:/";
     }
 
-    @GetMapping("/delete/${id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
             bookService.deleteById(id);
