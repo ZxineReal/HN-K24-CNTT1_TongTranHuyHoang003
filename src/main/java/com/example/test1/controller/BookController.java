@@ -59,6 +59,7 @@ public class BookController {
         }
         book.setId(id);
         bookService.save(book);
+        redirectAttributes.addAttribute("message", "Cập nhật sách thành công");
         return "redirect:/";
     }
 
@@ -68,7 +69,7 @@ public class BookController {
             bookService.deleteById(id);
             redirectAttributes.addFlashAttribute("message", "Xóa sách thành công");
         } catch (Exception e) {
-            redirectAttributes.addAttribute("error", "Không thể xóa sách có id " + id);
+            redirectAttributes.addFlashAttribute("message", "Không thể xóa sách có id " + id);
         }
         return "redirect:/";
     }
